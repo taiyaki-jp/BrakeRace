@@ -1,13 +1,5 @@
-public class FillMethodOriginEnum
+public class FillOriginEnum
 {
-    public enum Method
-    {
-        Horizontal=0,
-        Vertical,
-        Radial_90,
-        Radial_180,
-        Radial_360,
-    }
     public enum HorizontalOrigin
     {
         Left=0,
