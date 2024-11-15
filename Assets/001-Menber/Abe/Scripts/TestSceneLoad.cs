@@ -1,44 +1,28 @@
 ﻿using Cysharp.Threading.Tasks;
-using NaughtyAttributes;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TestSceneLoad : MonoBehaviour
+public class TestSceneLoad //: MonoBehaviour
 {
-    [SerializeField]private Button button;
-    [SerializeField, Label("フェード速度")] private float _fadeSpeed=100;
-    [SerializeField] private string str=null;
-
+    private float _fadeSpeed=100;
+    public float speed
+    {
+        set { _fadeSpeed = value; }
+    }
     private Image _fadeImage;
+    public Image image
+    {
+        set { _fadeImage = value; }
+    }
 
     private float _fillAmount = 0;
-
-    private void Start()
-    {
-        var a=FillOriginEnum.Radial_360_Origin.Right;
-
-        Debug.Log(a.GetType());
-        Debug.Log(a);
-        button.onClick.AddListener(test);
-    }
-
-    private void test()
-    {
-        FadeIn(Image.FillMethod.Radial180,FillOriginEnum.Radial_180_Origin.Buttom);
-    }
-    private void OnDestroy()
-    {
-        button.onClick.RemoveAllListeners();
-    }
     /// <summary>
-    /// フェードインを呼び出す　
+    /// フェードイン
     /// </summary>
     /// <param name="method">Image.FillMethod</param>
     /// <param name="origin">methodで指定したものに対応するFillOriginEnumを使う</param>
-    public async void FadeIn<T>(Image.FillMethod method,T origin)where T : Enum
+    public async UniTask FadeIn<T>(Image.FillMethod method,T origin) where T : Enum
     {
         if (TypeCheck(method, origin) == false)
         {
@@ -57,15 +41,14 @@ public class TestSceneLoad : MonoBehaviour
             _fadeImage.fillAmount= _fillAmount;
             await UniTask.Yield();
         }
-        SceneManager.LoadScene(str);
     }
     /// <summary>
-    /// フェードアウトを呼び出す
+    /// フェードアウト
     /// </summary>
     /// <param name="method">Image.FillMethod</param>
     /// <param name="origin">methodで指定したものに対応するFillOriginEnumを使う</param>
     /// <returns></returns>
-    public async Task FadeOut<T>(Image.FillMethod method, T origin)where T : Enum
+    public async UniTask FadeOut<T>(Image.FillMethod method, T origin)where T : Enum
     {
         if (TypeCheck(method, origin) == false)
         {
