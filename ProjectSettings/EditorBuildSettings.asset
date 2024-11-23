@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/001-Menber/Abe/Scenes/A-Test2.unity
     guid: e6a9e28dccc4a274e8e5a043902d1da7
+  - enabled: 1
+    path: Assets/001-Menber/Abe/Scenes/A-TestScene.unity
+    guid: 4bcc10c0b379fee44bd6ea3a7ed2c9ca
   m_configObjects: {}

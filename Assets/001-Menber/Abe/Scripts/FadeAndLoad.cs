@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestSceneLoad //: MonoBehaviour
+public class FadeAndLoad 
 {
     private float _fadeSpeed=100;
     public float speed
@@ -31,7 +31,6 @@ public class TestSceneLoad //: MonoBehaviour
         }
 
         _fillAmount = 0;
-        _fadeImage = Fade_Singleton.FadeImage;
 
         _fadeImage.fillMethod = method;
         _fadeImage.fillOrigin = Convert.ToInt32(origin);//Enumをintに変換

@@ -6,6 +6,7 @@ public class Fade_Singleton : MonoBehaviour
     private static Fade_Singleton Instance_closed;
 
     private static Image _image;
+    private static GameObject _canvas;
 
     private void Awake()
     {
@@ -21,11 +22,17 @@ public class Fade_Singleton : MonoBehaviour
 
         //↓初期化処理
         _image = GetComponentInChildren<Image>();
+        _canvas = this.gameObject;
     }
     private Fade_Singleton() { }//外部からの生成をブロック
 
     public static Image FadeImage
     {
         get { return _image; }
+    }
+
+    public static GameObject canvas
+    {
+        get { return _canvas; }
     }
 }

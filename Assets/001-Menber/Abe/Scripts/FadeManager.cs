@@ -1,43 +1,66 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
 {
-    [SerializeField, Label("ƒtƒF[ƒh‘¬“x")] float FadeSpeed=100;
-    private TestSceneLoad load;
+    [SerializeField, Label("ãƒ•ã‚§ãƒ¼ãƒ‰é€Ÿåº¦")] float FadeSpeed=100;
+    private GameObject FadeCanvas;
+    private FadeAndLoad2 load;
+
     System.Action BeforAction;
     System.Action AfterAction;
     System.Action FinishAction;
 
     private void Start()
     {
-        load = new TestSceneLoad();
-        load.image=GetComponent<Image>();
+        FadeCanvas = Fade_Singleton.canvas;
+
+        load = new FadeAndLoad2();
+        load.image=Fade_Singleton.FadeImage;
         load.speed=FadeSpeed;
     }
 
 
     /// <summary>
-    /// ƒtƒF[ƒh‚ğŒÄ‚Ño‚·ŠÖ”
+    /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚’å‘¼ã³å‡ºã™é–¢æ•°1
     /// </summary>
-    /// <typeparam name="T">FillOriginEnum</typeparam>
-    /// <param name="Startmethod">ƒtƒF[ƒhƒCƒ“‚·‚é‚Ì“®‚«</param>
-    /// <param name="StartOrigin">ƒtƒF[ƒhƒCƒ“‚Ì“®‚«‚ÌŒü‚«</param>
-    /// <param name="Endmethod">ƒtƒF[ƒhƒAƒEƒg‚·‚é‚Ì“®‚«</param>
-    /// <param name="EndOrigin">ƒtƒF[ƒhƒAƒEƒg‚Ì“®‚«‚ÌŒü‚«</param>
-    /// <param name="SceneName">‘JˆÚæ‚ÌƒV[ƒ“‚Ì–¼‘O</param>
-    public async void Fade<T>(Image.FillMethod Startmethod,T StartOrigin,Image.FillMethod Endmethod,T EndOrigin,string SceneName)where T :  Enum
+    /// <param name="SceneName">é·ç§»å…ˆã®ã‚·ãƒ¼ãƒ³ã®åå‰</param>
+    public async void Fade(string SceneName)
     {
-        await load.FadeIn(Startmethod, StartOrigin);
+        FadeCanvas = Fade_Singleton.canvas;
+        FadeCanvas.SetActive(true);
+        
+        await load.FadeIn();
+        //BeforAction.Invoke();
+
+        await SceneManager.LoadSceneAsync(SceneName);
+        //AfterAction.Invoke();
+
+        await load.FadeOut();
+        //FinishAction.Invoke();
+
+        FadeCanvas.SetActive(false);
+    }
+    /// <summary>
+    /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚’å‘¼ã³å‡ºã™é–¢æ•°2
+    /// </summary>
+    /// <param name="SceneName">é·ç§»å…ˆã®ã‚·ãƒ¼ãƒ³ã®åå‰</param>
+    public async void FadeWhite(string SceneName)
+    {
+        FadeCanvas.SetActive(true);
+
+        await load.FadeInWhite();
         BeforAction.Invoke();
+
         await SceneManager.LoadSceneAsync(SceneName);
         AfterAction.Invoke();
-        await load.FadeOut(Endmethod, EndOrigin);
-        FinishAction.Invoke();
-    }
 
+        await load.FadeOutWhite();
+        FinishAction.Invoke();
+
+        FadeCanvas.SetActive(false);
+    }
 }
