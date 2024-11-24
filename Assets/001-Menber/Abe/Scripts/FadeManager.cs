@@ -53,13 +53,13 @@ public class FadeManager : MonoBehaviour
         FadeCanvas.SetActive(true);
 
         await load.FadeInWhite();
-        BeforAction.Invoke();
+        //BeforAction.Invoke();
 
         await SceneManager.LoadSceneAsync(SceneName);
-        AfterAction.Invoke();
+        //AfterAction.Invoke();
 
         await load.FadeOutWhite();
-        FinishAction.Invoke();
+        //FinishAction.Invoke();
 
         FadeCanvas.SetActive(false);
     }
