@@ -24,7 +24,7 @@ public class FadeAndLoad2
     public async UniTask FadeIn()
     {
         _fillAmount = 0;
-        _fadeImage.color = new Color(0, 0, 0);
+        _fadeImage.color = new Color(0, 0, 0, 1);
         _fadeImage.fillMethod = Image.FillMethod.Horizontal;
         _fadeImage.fillOrigin = Convert.ToInt32(FillOriginEnum.HorizontalOrigin.Left);//Enumをintに変換
         while (_fillAmount < 1)
@@ -40,7 +40,7 @@ public class FadeAndLoad2
     public async UniTask FadeOut()
     {
         _fillAmount = 1;
-        _fadeImage.color = new Color(0, 0, 0);
+        _fadeImage.color = new Color(0, 0, 0, 1);
         _fadeImage.fillMethod = Image.FillMethod.Horizontal;
         _fadeImage.fillOrigin = Convert.ToInt32(FillOriginEnum.HorizontalOrigin.Right);//Enumをintに変換
         while (_fillAmount > 0)
@@ -58,7 +58,7 @@ public class FadeAndLoad2
     {
         _fadeImage.fillAmount = 1;
         float image_a = 0;
-        _fadeImage.color = new Color(1, 1, 1);
+        _fadeImage.color = new Color(1, 1, 1, 0);
         _fadeImage.color =new (_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, image_a);
         while (image_a < 1)
         {
@@ -74,11 +74,28 @@ public class FadeAndLoad2
     {
         _fadeImage.fillAmount = 1;
         float image_a = 1;
-        _fadeImage.color = new Color(1, 1, 1);
+        _fadeImage.color = new Color(1, 1, 1, 1);
         _fadeImage.color = new(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, image_a);
         while (image_a > 0)
         {
             image_a -= Time.deltaTime; 
+            _fadeImage.color = new(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, image_a);
+            await UniTask.Yield();
+        }
+    }
+
+    /// <summary>
+    /// フェードイン
+    /// </summary>
+    public async UniTask FadeOutBrack()
+    {
+        _fadeImage.fillAmount = 1;
+        float image_a = 1;
+        _fadeImage.color = new Color(0, 0, 0, 1);
+        _fadeImage.color = new(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, image_a);
+        while (image_a > 0)
+        {
+            image_a -= Time.deltaTime;
             _fadeImage.color = new(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, image_a);
             await UniTask.Yield();
         }

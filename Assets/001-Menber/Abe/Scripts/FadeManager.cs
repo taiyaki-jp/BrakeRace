@@ -21,6 +21,12 @@ public class FadeManager : MonoBehaviour
         load = new FadeAndLoad2();
         load.image=Fade_Singleton.FadeImage;
         load.speed=FadeSpeed;
+
+        if (Fade_Singleton.IsFirst)
+        {
+            FirstFade();
+            Fade_Singleton.IsFirst = false;
+        }
     }
 
 
@@ -59,6 +65,16 @@ public class FadeManager : MonoBehaviour
         //AfterAction.Invoke();
 
         await load.FadeOutWhite();
+        //FinishAction.Invoke();
+
+        FadeCanvas.SetActive(false);
+    }
+
+    private async void FirstFade()
+    {
+        //AfterAction.Invoke();
+
+        await load.FadeOutBrack();
         //FinishAction.Invoke();
 
         FadeCanvas.SetActive(false);

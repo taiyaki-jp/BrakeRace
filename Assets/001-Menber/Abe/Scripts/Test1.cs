@@ -20,6 +20,6 @@ public class Test1 : MonoBehaviour
 
     private void FadeStart()
     {
-        _fadeManager.FadeWhite("A-Test2");
+        _fadeManager.FadeWhite("A-TestScene"); 
     }
 }

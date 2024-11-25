@@ -723,6 +723,7 @@ GameObject:
   - component: {fileID: 910077473}
   - component: {fileID: 910077472}
   - component: {fileID: 910077471}
+  - component: {fileID: 910077475}
   - component: {fileID: 910077474}
   m_Layer: 5
   m_Name: Button
@@ -843,6 +844,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1870046e71553843b2f0be861f414c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: {fileID: 1389408404}
+  _fadeManager: {fileID: 599706144}
+--- !u!114 &910077475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910077469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f0ee38d1b66f841bae49108cafc15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 910077471}
