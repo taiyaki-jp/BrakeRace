@@ -74,7 +74,9 @@ public class CameraDolly : MonoBehaviour
             dolly.m_PathPosition = Mathf.Max(pathpos, 0);
             await UniTask.Yield();
         }
-        await UniTask.DelayFrame(60);//カメラの動きにラグがあるから少し待機
+        await UniTask.DelayFrame(20);//カメラの動きにラグがあるから少し待機
         virtualCamera.LookAt = this.transform;
+        await UniTask.DelayFrame(40);//カメラの動きにラグがあるから少し待機
+        
     }
 }
