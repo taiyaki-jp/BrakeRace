@@ -1,22 +1,38 @@
 using Cinemachine;
 using Cysharp.Threading.Tasks;
+using NaughtyAttributes;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraDolly : MonoBehaviour
 {
     [SerializeField]private CinemachineSmoothPath path;
     [SerializeField]private CinemachineVirtualCamera virtualCamera;
-    [SerializeField] private Transform test;
+    [SerializeField, Label("テスト用-白線の位置")] private Transform test;
+    [SerializeField, Label("テスト用-ドリー開始ボタン")] private Button _button;
 
-    private CinemachineTrackedDolly dolly; 
+    private bool _doing=false;
+    private CinemachineTrackedDolly dolly;
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-        dolly=virtualCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
+        dolly = virtualCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
+        _button.onClick.AddListener(Button);
+    }
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveAllListeners();
+    }
+    private async void Button()
+    {
+        if(_doing) return;
+        _doing = true;
         SetWayPoint(test);
         await DoDolly();
         _ = DoDollyBack();
+        _doing = false;
     }
     /// <summary>
     /// ウェイポイントの設定(とlookatも設定)
