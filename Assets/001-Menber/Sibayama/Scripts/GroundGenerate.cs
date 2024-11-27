@@ -8,7 +8,7 @@ public class GroundGenerate : MonoBehaviour
     //  生成するGroundのPrefabをアタッチする
     [SerializeField] private List<GameObject> _grounds = new List<GameObject>();
 
-    int border = 20;
+    int border = 0;
     float playerStartPosZ;  //  Playerの初期座標 z座標
     float playerNowPosZ;  //  Playerの現在の z座標
 
@@ -38,8 +38,8 @@ public class GroundGenerate : MonoBehaviour
         if (playerDistance > border)
         {
             //ステージ生成
-            Debug.Log("ステージ生成");
-            var obj = Instantiate(_grounds[Random.Range(0, 3)], new Vector3(0, 0, _player.transform.position.z + 20), Quaternion.identity);//Playerの一定距離だけ先にステージ生成(-5.5fはステージ生成の位置補正の為)
+            //Debug.Log("ステージ生成");
+            var obj = Instantiate(_grounds[Random.Range(0, 3)], new Vector3(0, 0, _player.transform.position.z + 50), Quaternion.identity);//Playerの一定距離だけ先にステージ生成(-5.5fはステージ生成の位置補正の為)
             _groundsList.Add(obj);  //  List追加
             playerDistance = 0;//playerDistanceのリセット
             border = 10;//borderの再設定
