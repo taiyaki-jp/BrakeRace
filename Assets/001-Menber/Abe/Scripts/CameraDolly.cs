@@ -9,8 +9,8 @@ public class CameraDolly : MonoBehaviour
 {
     [SerializeField]private CinemachineSmoothPath path;
     [SerializeField]private CinemachineVirtualCamera virtualCamera;
-    [SerializeField, Label("テスト用-白線の位置")] private Transform test;
-    [SerializeField, Label("テスト用-ドリー開始ボタン")] private Button _button;
+    [SerializeField, Label("白線の位置"), BoxGroup("テスト用")] private Transform test;
+    [SerializeField, Label("ドリー開始ボタン"), BoxGroup("テスト用")] private Button _button;
 
     private bool _doing=false;
     private CinemachineTrackedDolly dolly;

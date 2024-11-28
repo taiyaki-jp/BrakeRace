@@ -337,7 +337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233041671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15172, y: -8.7403165e-32, z: -5.0620523e-33, w: 0.9884235}
+  m_LocalRotation: {x: 0.15172, y: -1e-45, z: -0, w: 0.9884235}
   m_LocalPosition: {x: 0, y: 2, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5303,7 +5303,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.996718e-31, y: -0.1083608, z: 1.1557069}
+  m_LocalPosition: {x: 3e-45, y: -0.1083608, z: 1.1557069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5517,7 +5517,6 @@ GameObject:
   - component: {fileID: 382421613}
   - component: {fileID: 382421612}
   - component: {fileID: 382421611}
-  - component: {fileID: 382421615}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5609,20 +5608,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &382421615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382421610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1870046e71553843b2f0be861f414c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1738271177}
-  _fadeManager: {fileID: 1530816026}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6265,18 +6250,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f2f90444348b574fa9c4fa21936356d, type: 3}
---- !u!114 &1530816026 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8498939284268394605, guid: 1f2f90444348b574fa9c4fa21936356d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1530816025}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e53f13d00b422c478129ab51b8687fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1738271175
 GameObject:
   m_ObjectHideFlags: 0
@@ -6289,6 +6262,7 @@ GameObject:
   - component: {fileID: 1738271179}
   - component: {fileID: 1738271178}
   - component: {fileID: 1738271177}
+  - component: {fileID: 1738271180}
   m_Layer: 5
   m_Name: FadeButton
   m_TagString: Untagged
@@ -6398,6 +6372,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738271175}
   m_CullTransparentMesh: 1
+--- !u!114 &1738271180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738271175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef76eb29254fe1408097ec7c55a9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1738271177}
+  _SceneName: A-Test2
+  _useWhite: 0
 --- !u!1 &1738968441
 GameObject:
   m_ObjectHideFlags: 0
