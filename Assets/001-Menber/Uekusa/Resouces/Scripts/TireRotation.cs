@@ -113,8 +113,11 @@ public class TireRotation : MonoBehaviour
         //  ƒ^ƒCƒ„‚ğ‰ñ“]‚³‚¹‚é
         transform.Rotate(Vector3.right, currentRotation * Time.deltaTime);
 
-        //  ‰ñ“]”‚ğUI‚É•\¦
-        _tireText.text = "Tire : " + Mathf.RoundToInt(currentRotation);
+        if (_tireText != null)
+        {
+            //  ‰ñ“]”‚ğUI‚É•\¦
+            _tireText.text = "Tire : " + Mathf.RoundToInt(currentRotation);
+        }
     }
 
     public void OnAcceleButtonDown(BaseEventData eventData)
