@@ -2,6 +2,7 @@ using Cinemachine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,12 +19,12 @@ public class CameraDolly : MonoBehaviour
     void Start()
     {
         dolly = virtualCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
-        _button.onClick.AddListener(Button);
+        if(_button != null)_button.onClick.AddListener(Button);
     }
 
     private void OnDestroy()
     {
-        _button.onClick.RemoveAllListeners();
+        if (_button != null) _button.onClick.RemoveAllListeners();
     }
     private async void Button()
     {
@@ -41,7 +42,7 @@ public class CameraDolly : MonoBehaviour
     public void SetWayPoint(Transform wptransform)
     {
         CinemachineSmoothPath.Waypoint newwp = new CinemachineSmoothPath.Waypoint();
-        newwp.position = new Vector3(wptransform.position.x-4,wptransform.position.y+3,wptransform.position.z);//M†‚Ì”’ü‚ğ‚¢‚ê‚é
+        newwp.position = new Vector3(wptransform.position.x-3,wptransform.position.y+3,wptransform.position.z-this.transform.position.z+2);//M†‚Ì”’ü‚ğ‚¢‚ê‚é
         newwp.roll = 0;
 
         virtualCamera.LookAt = wptransform;//‚Â‚¢‚Å‚Élookat‚àİ’è

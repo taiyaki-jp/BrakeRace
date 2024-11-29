@@ -15,9 +15,12 @@ EditorBuildSettings:
     path: Assets/000-MainData/Scenes/ResultScene/ResultScene-File.unity
     guid: 8668c4a2e47242b49a2161c0c07dc3c9
   - enabled: 1
+    path: Assets/000-MainData/Scenes/ResultScene/ResultScene-Crear.unity
+    guid: b8d3133664e472d49b94404572ff0d6d
+  - enabled: 0
     path: Assets/001-Menber/Abe/Scenes/A-TestScene.unity
     guid: 4bcc10c0b379fee44bd6ea3a7ed2c9ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/001-Menber/Abe/Scenes/A-Test2.unity
     guid: e6a9e28dccc4a274e8e5a043902d1da7
   m_configObjects: {}

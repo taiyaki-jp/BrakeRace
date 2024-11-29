@@ -1,12 +1,10 @@
 ﻿using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StopLine : MonoBehaviour
 {
-    [SerializeField] Rigidbody _player;
+     
     [SerializeField] GameObject _outLine;
     [SerializeField] Transform _line;
     // ↓加速用のやつ
@@ -17,23 +15,27 @@ public class StopLine : MonoBehaviour
     [SerializeField, Label("その次"),      BoxGroup("加速ボーナス数値")] float _boost2;
     [SerializeField, Label("おまけ"),      BoxGroup("加速ボーナス数値")] float _boost3;
 
-    CarController carcontroller;
+    private Rigidbody _player;
+    private CarController carcontroller;
     private CameraDolly dolly;
     private OutLine outLine;
     private FadeManager fade;
 
+    private bool isdone = false;
 
     private void Start()
     {
+        _player=GameObject.Find("Player").GetComponent<Rigidbody>();
         carcontroller = GameObject.Find("Player").GetComponent<CarController>();
         dolly =GameObject.Find("Player").GetComponent<CameraDolly>();
         outLine=_outLine.GetComponent<OutLine>();
-        fade = GameObject.Find("fade").GetComponent<FadeManager>();
+        fade = GameObject.Find("FadeManager").GetComponent<FadeManager>();
     }
     private async void OnTriggerStay(Collider other)
     {
-        if(_player.velocity.magnitude <= 0.01) 
+        if(_player.velocity.magnitude <= 0.01&& ! isdone) 
         {
+            isdone = true;
             float range = _player.transform.position.z - _line.position.z; 
             
             //速度を変える
@@ -64,6 +66,7 @@ public class StopLine : MonoBehaviour
         if (outLine.IsMissed)
         {
             fade.Fade("ResultScene-File");
+            return;
         }
         await dolly.DoDollyBack();
     }

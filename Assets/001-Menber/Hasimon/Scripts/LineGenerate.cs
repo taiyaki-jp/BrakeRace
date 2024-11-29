@@ -20,13 +20,13 @@ public class LineGenerate : MonoBehaviour
         switch (rnd)
         {
             case 1:
-                instance = Instantiate(obj, new Vector3(_position.x + _generateRange1, 0.0f, 0.0f), Quaternion.identity);
+                instance = Instantiate(obj, new Vector3(0.0f, 0.0f, _position.z + _generateRange1), Quaternion.Euler(0.0f,90.0f,0.0f));
                 break;
             case 2:
-                instance = Instantiate(obj, new Vector3(_position.x + _generateRange2, 0.0f, 0.0f), Quaternion.identity);
+                instance = Instantiate(obj, new Vector3(0.0f, 0.0f, _position.z + _generateRange2), Quaternion.Euler(0.0f, 90.0f, 0.0f));
                 break;
             case 3:
-                instance = Instantiate(obj, new Vector3(_position.x + _generateRange3, 0.0f, 0.0f), Quaternion.identity);
+                instance = Instantiate(obj, new Vector3(0.0f, 0.0f, _position.z + _generateRange3), Quaternion.Euler(0.0f, 90.0f, 0.0f));
                 break;
         }
     }

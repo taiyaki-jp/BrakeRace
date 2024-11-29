@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5077790114136552049}
   - component: {fileID: 352031695558426972}
   - component: {fileID: 3298394152863432446}
-  - component: {fileID: 5590374520178910109}
+  - component: {fileID: 3133050987012204656}
   m_Layer: 0
   m_Name: LineColi
   m_TagString: Untagged
@@ -119,16 +119,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108b2833e4159b44a894577a459f54f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _outLine: {fileID: 4217348689646808978}
   _line: {fileID: 7142128362972390716}
   _boostLine1: 0
   _boostLine2: 0
   _boostLine3: 0
-  _boost1: 0
-  _boost2: 0
-  _boost3: 0
---- !u!114 &5590374520178910109
+  _boost1: 100
+  _boost2: 40
+  _boost3: 10
+--- !u!114 &3133050987012204656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,9 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ec05ff8fbd8c644a1dd1c7ee16febb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _generateRange1: 0
-  _generateRange2: 0
-  _generateRange3: 0
+  obj: {fileID: 5937080903939805233}
+  _generateRange1: 50
+  _generateRange2: 100
+  _generateRange3: 150
 --- !u!1 &4217348689646808978
 GameObject:
   m_ObjectHideFlags: 0

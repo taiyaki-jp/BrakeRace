@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GoalController : MonoBehaviour
 {
+    
     [SerializeField] GameObject _player;
     [SerializeField] private TextMeshProUGUI _distanceText; //  TextÇÇ¢ÇÍÇÈ
 
@@ -20,9 +21,9 @@ public class GoalController : MonoBehaviour
     /// ÉSÅ[ÉãîªíË
     /// </summary>
     /// <param name="other"></param>
-    void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("ÉSÅ[Éã!!");
             _fadeManager.Fade("ResultScene-Crear");

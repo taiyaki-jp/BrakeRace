@@ -100,5 +100,5 @@ public class FadeAndLoad2
             await UniTask.Yield();
         }
     }
-
+    
 }
