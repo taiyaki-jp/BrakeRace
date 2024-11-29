@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class LineGenerate : MonoBehaviour
 {
+    [SerializeField] GameObject obj;
     [SerializeField] float _generateRange1;
     [SerializeField] float _generateRange2;
     [SerializeField] float _generateRange3;
 
     private Vector3 _position = Vector3.zero;
+    GameObject instance;
+    public GameObject Line=>instance;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,16 +20,13 @@ public class LineGenerate : MonoBehaviour
         switch (rnd)
         {
             case 1:
-                GameObject obj = (GameObject)Resources.Load("StopLine");
-                GameObject instance = (GameObject)Instantiate(obj, new Vector3(_position.x + _generateRange1, 0.0f, 0.0f), Quaternion.identity);
+                instance = Instantiate(obj, new Vector3(_position.x + _generateRange1, 0.0f, 0.0f), Quaternion.identity);
                 break;
             case 2:
-                obj = (GameObject)Resources.Load("StopLine");
-                instance = (GameObject)Instantiate(obj, new Vector3(_position.x + _generateRange2, 0.0f, 0.0f), Quaternion.identity);
+                instance = Instantiate(obj, new Vector3(_position.x + _generateRange2, 0.0f, 0.0f), Quaternion.identity);
                 break;
             case 3:
-                obj = (GameObject)Resources.Load("StopLine");
-                instance = (GameObject)Instantiate(obj, new Vector3(_position.x + _generateRange3, 0.0f, 0.0f), Quaternion.identity);
+                instance = Instantiate(obj, new Vector3(_position.x + _generateRange3, 0.0f, 0.0f), Quaternion.identity);
                 break;
         }
     }

@@ -349,6 +349,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 195414012}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &195414014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7566725608212481250, guid: 72179793d907c4b478a8dbe2f452fa5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 195414012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &195414015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2054133105931966623, guid: 72179793d907c4b478a8dbe2f452fa5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 195414012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1025,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 179076622}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5663156579988803814, guid: 7bcab70db643fc8419611d54f283e719,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 652883048}
   m_SourcePrefab: {fileID: 100100000, guid: 7bcab70db643fc8419611d54f283e719, type: 3}
 --- !u!1 &652883044 stripped
 GameObject:
@@ -1027,6 +1055,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab44c33b983005f40b9aacbab09fe40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &652883048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652883044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b256408da1aac6a479978b0654d9592c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 195414014}
+  virtualCamera: {fileID: 195414015}
+  test: {fileID: 0}
+  _button: {fileID: 0}
 --- !u!1001 &936941890
 PrefabInstance:
   m_ObjectHideFlags: 0

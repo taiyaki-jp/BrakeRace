@@ -31,7 +31,7 @@ public class CameraDolly : MonoBehaviour
         _doing = true;
         SetWayPoint(test);
         await DoDolly();
-        _ = DoDollyBack();
+        await DoDollyBack();
         _doing = false;
     }
     /// <summary>
