@@ -2,24 +2,27 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    [SerializeField] private CarController _carController;
-
+    private CarController _carController;
+    private void Start()
+    {
+        _carController=GameObject.Find("Player").GetComponent<CarController>();
+    }
     public void AccelePush()
     {
-        _carController.StartAccelerating();
+        _carController.Accel=true;
     }
 
     public void AcceleRelease()
     {
-        _carController.StopAccelerating();
+        _carController.Accel = false;
     }
     public void BrakePush()
     {
-        _carController.StartBraking();
+        _carController.Braki = true;
     }
 
     public void BrakeRelease()
     {
-        _carController.StopBraking();
+        _carController.Braki = false;
     }
 }

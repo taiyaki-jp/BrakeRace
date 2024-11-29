@@ -53,12 +53,12 @@ MonoBehaviour:
   drag: 1
   accelerationThreshold: 100
   acceleDamping: 0.5
-  isRain: 0
   speedText: {fileID: 0}
-  _tirefl: {fileID: 81365685134022506}
-  _tirerl: {fileID: 8868747290999769285}
-  _tirerr: {fileID: 2702226892227873983}
-  _tirefr: {fileID: 198682394169673765}
+  _tires:
+  - {fileID: 81365685134022506}
+  - {fileID: 8868747290999769285}
+  - {fileID: 2702226892227873983}
+  - {fileID: 198682394169673765}
 --- !u!54 &1805484886692602510
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -368,7 +368,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7429168313181634348, guid: 8258fdccd226b584b8dc1c7ac1652db0, type: 3}
     - {fileID: 4204769057043650455, guid: 8258fdccd226b584b8dc1c7ac1652db0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -403,7 +402,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145003737681654975}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57d7063628fc24d4097ede4a5efbf695, type: 3}
   m_Name: 
@@ -427,7 +426,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145127696956916611}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57d7063628fc24d4097ede4a5efbf695, type: 3}
   m_Name: 
@@ -475,7 +474,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145763673952749665}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57d7063628fc24d4097ede4a5efbf695, type: 3}
   m_Name: 

@@ -9,9 +9,12 @@ public class GoalController : MonoBehaviour
     [SerializeField] GameObject _player;
     [SerializeField] private TextMeshProUGUI _distanceText; //  Textをいれる
 
+    private FadeManager _fadeManager;
+
     void Start()
     {
         //Instantiate(_goal, new Vector3(0, _player.transform.position.y, _goalPosition), Quaternion.identity);
+        _fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
     }
     /// <summary>
     /// ゴール判定
@@ -22,6 +25,7 @@ public class GoalController : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("ゴール!!");
+            _fadeManager.Fade("ResultScene-Crear");
             //SceneManager.LoadScene("シーン名");
         }
     }
