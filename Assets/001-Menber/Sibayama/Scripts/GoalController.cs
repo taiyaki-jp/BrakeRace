@@ -26,7 +26,7 @@ public class GoalController : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("ƒS[ƒ‹!!");
-            _fadeManager.Fade("ResultScene-Crear");
+            _fadeManager.Fade("TitleScene");
             //SceneManager.LoadScene("ƒV[ƒ“–¼");
         }
     }

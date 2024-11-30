@@ -65,7 +65,7 @@ public class StopLine : MonoBehaviour
         await dolly.DoDolly();
         if (outLine.IsMissed)
         {
-            fade.Fade("ResultScene-File");
+            fade.Fade("TitleScene");
             return;
         }
         await dolly.DoDollyBack();
