@@ -37,6 +37,6 @@ public class GoalController : MonoBehaviour
     private void Update()
     {
         float dis = Vector3.Distance(this.transform.position, _player.transform.position) - 1f;   //  Cube までとの間の距離算出(Cubeの中心座標から - 0.5引いてる)
-        _distanceText.text = dis.ToString("F0");
+        _distanceText.text = $"残り{dis.ToString("F0")}m";
     }
 }
