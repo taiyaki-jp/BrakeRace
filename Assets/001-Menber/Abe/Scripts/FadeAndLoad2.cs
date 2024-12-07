@@ -26,7 +26,7 @@ public class FadeAndLoad2
         _fillAmount = 0;
         _fadeImage.color = new Color(0, 0, 0, 1);
         _fadeImage.fillMethod = Image.FillMethod.Horizontal;
-        _fadeImage.fillOrigin = Convert.ToInt32(FillOriginEnum.HorizontalOrigin.Left);//Enumをintに変換
+        _fadeImage.fillOrigin = Convert.ToInt32(HorizontalOrigin.Left);//Enumをintに変換
         while (_fillAmount < 1)
         {
             _fillAmount += Time.deltaTime;
@@ -42,7 +42,7 @@ public class FadeAndLoad2
         _fillAmount = 1;
         _fadeImage.color = new Color(0, 0, 0, 1);
         _fadeImage.fillMethod = Image.FillMethod.Horizontal;
-        _fadeImage.fillOrigin = Convert.ToInt32(FillOriginEnum.HorizontalOrigin.Right);//Enumをintに変換
+        _fadeImage.fillOrigin = Convert.ToInt32(HorizontalOrigin.Right);//Enumをintに変換
         while (_fillAmount > 0)
         {
             _fillAmount -= Time.deltaTime;

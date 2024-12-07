@@ -1,6 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StopLine : MonoBehaviour
 {
@@ -65,7 +67,7 @@ public class StopLine : MonoBehaviour
         await dolly.DoDolly();
         if (outLine.IsMissed)
         {
-            fade.Fade("TitleScene");
+            fade.Fade<Enum>("TitleScene",Image.FillMethod.Radial180,Radial_180_Origin.Buttom,Image.FillMethod.Vertical,VerticalOrigin.Top);
             return;
         }
         await dolly.DoDollyBack();

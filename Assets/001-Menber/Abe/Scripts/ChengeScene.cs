@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +24,10 @@ public class ChengeScene : MonoBehaviour
     private void FadeStart()
     {
         if (_useWhite)
-        _fadeManager.FadeWhite(_SceneName);
+            _fadeManager.Fade(_SceneName, Color.white, Color.white);
         else
-        _fadeManager.Fade(_SceneName);
+            _fadeManager.Fade<Enum>(_SceneName, Image.FillMethod.Horizontal, HorizontalOrigin.Left, Image.FillMethod.Horizontal, HorizontalOrigin.Right);
+
+
     }
 }

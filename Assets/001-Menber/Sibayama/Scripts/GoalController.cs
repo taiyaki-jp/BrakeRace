@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GoalController : MonoBehaviour
 {
@@ -26,7 +28,7 @@ public class GoalController : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("ÉSÅ[Éã!!");
-            _fadeManager.Fade("TitleScene");
+            _fadeManager.Fade<Enum>("TitleScene", Image.FillMethod.Radial90, Radial_90_Origin.ButtomLeft, Image.FillMethod.Radial360, Radial_360_Origin.Top);
             //SceneManager.LoadScene("ÉVÅ[Éìñº");
         }
     }
