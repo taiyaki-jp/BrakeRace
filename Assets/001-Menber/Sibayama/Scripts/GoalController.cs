@@ -28,7 +28,7 @@ public class GoalController : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("ÉSÅ[Éã!!");
-            _fadeManager.Fade<Enum>("TitleScene", Image.FillMethod.Radial90, Radial_90_Origin.ButtomLeft, Image.FillMethod.Radial360, Radial_360_Origin.Top);
+            _fadeManager.Fade<Enum>("TitleScene", Radial_90_Origin.ButtomLeft, Radial_360_Origin.Top);
             //SceneManager.LoadScene("ÉVÅ[Éìñº");
         }
     }

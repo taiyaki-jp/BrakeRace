@@ -24,9 +24,9 @@ public class ChengeScene : MonoBehaviour
     private void FadeStart()
     {
         if (_useWhite)
-            _fadeManager.Fade(_SceneName, Color.white, Color.white);
+            _fadeManager.Fade(_SceneName, Color.white);
         else
-            _fadeManager.Fade<Enum>(_SceneName, Image.FillMethod.Horizontal, HorizontalOrigin.Left, Image.FillMethod.Horizontal, HorizontalOrigin.Right);
+            _fadeManager.Fade<Enum>(_SceneName, HorizontalOrigin.Left,HorizontalOrigin.Right);
 
 
     }

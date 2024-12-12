@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadeAndLoad2
+public class OldFadeAndLoad
 {
 
     private float _fadeSpeed=100;

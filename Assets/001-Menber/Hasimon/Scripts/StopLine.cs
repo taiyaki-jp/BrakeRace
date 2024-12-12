@@ -67,7 +67,7 @@ public class StopLine : MonoBehaviour
         await dolly.DoDolly();
         if (outLine.IsMissed)
         {
-            fade.Fade<Enum>("TitleScene",Image.FillMethod.Radial180,Radial_180_Origin.Buttom,Image.FillMethod.Vertical,VerticalOrigin.Top);
+            fade.Fade<Enum>("TitleScene",Radial_180_Origin.Buttom,VerticalOrigin.Top);
             return;
         }
         await dolly.DoDollyBack();

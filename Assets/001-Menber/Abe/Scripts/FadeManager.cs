@@ -3,7 +3,6 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
 {
@@ -77,8 +76,8 @@ public class FadeManager : MonoBehaviour
     private async void FirstFade()
     {
         //AfterAction.Invoke();
-
-        await load.FadeOut(Color.black);
+        load.SetColor(Color.black);
+        await load.FadeOut();
         //FinishAction.Invoke();
 
         FadeCanvas.SetActive(false);
@@ -86,27 +85,28 @@ public class FadeManager : MonoBehaviour
 
 
 
-
     /// <summary>
     /// FillAmountフェードを呼び出す関数
     /// </summary>
     /// <param name="SceneName">遷移先のシーンの名前</param>
-    /// <param name="StartMethod">Image.FillMethod</param>
-    /// <param name="StartOrigin">StartMethodに対応するFillOriginEnum.csのEnum</param>
-    /// <param name="EndMethod">Image.FillMethod</param>
-    /// <param name="EndOrigin">EndMethodに対応するFillOriginEnum.csのEnum</param>
-    public async void Fade<OriginEnum>(string SceneName,Image.FillMethod StartMethod, OriginEnum StartOrigin,Image.FillMethod EndMethod, OriginEnum EndOrigin)where OriginEnum : Enum
+    /// <param name="StartOrigin">FillOriginEnum.csのEnum</param>
+    /// <param name="EndOrigin">FillOriginEnum.csのEnum</param>
+    /// <param name="color">[省略可能]フェードの色 省略すると黒</param>
+    public async void Fade<OriginEnum>(string SceneName,OriginEnum StartOrigin,OriginEnum EndOrigin,Color color=default)where OriginEnum : Enum
     {
         FadeCanvas = Fade_Singleton.canvas;
         FadeCanvas.SetActive(true);
 
-        await load.FadeIn(StartMethod,StartOrigin);
+        if(color==default)load.SetColor(Color.black); 
+            else load.SetColor(color);
+
+        await load.FadeIn(StartOrigin);
         //BeforAction.Invoke();
 
         await SceneManager.LoadSceneAsync(SceneName);
         //AfterAction.Invoke();
 
-        await load.FadeOut(EndMethod,EndOrigin);
+        await load.FadeOut(EndOrigin);
         //FinishAction.Invoke();
 
         FadeCanvas.SetActive(false);
@@ -115,20 +115,22 @@ public class FadeManager : MonoBehaviour
     /// 透明度フェードを呼び出す関数
     /// </summary>
     /// <param name="SceneName">遷移先のシーンの名前</param>
-    /// <param name="StartColor">どんな色でフェードを開始するか</param>
-    /// <param name="EndColor">どんな色でフェードを終了するか()</param>
-    public async void Fade(string SceneName,Color StartColor,Color EndColor)
+    /// <param name="Color">どんな色でフェードするか</param>
+    public async void Fade(string SceneName,Color color)
     {
         FadeCanvas = Fade_Singleton.canvas;
         FadeCanvas.SetActive(true);
 
-        await load.FadeIn(StartColor);
+        if (color == default) load.SetColor(Color.black);
+        else load.SetColor(color);
+
+        await load.FadeIn();
         //BeforAction.Invoke();
 
         await SceneManager.LoadSceneAsync(SceneName);
         //AfterAction.Invoke();
 
-        await load.FadeOut(EndColor);
+        await load.FadeOut();
         //FinishAction.Invoke();
 
         FadeCanvas.SetActive(false);

@@ -22,22 +22,16 @@ public class FadeAndLoad
     /// <typeparam name="OriginEnum">FillOriginEnum.csの中のEnum</typeparam>
     /// <param name="method">Image.FillMethod</param>
     /// <param name="origin">methodで指定したものに対応するFillOriginEnumを使う</param>
-    public async UniTask FadeIn<OriginEnum>(Image.FillMethod method, OriginEnum origin) where OriginEnum : Enum
+    public async UniTask FadeIn<OriginEnum>(OriginEnum origin) where OriginEnum : Enum
     {
-        if (TypeCheck(method, origin) == false)
-        {
-            Debug.LogError("指定されたmethodとoriginが正しく対応していません!");
-            return;
-        }
-
         float fillAmount = 0;
         _fadeImage.fillAmount = fillAmount;
 
-        _fadeImage.fillMethod = method;
+        AutoMethodSet(origin);
         _fadeImage.fillOrigin = Convert.ToInt32(origin);//Enumをintに変換
         while (fillAmount < 1)
         {
-            fillAmount += Time.deltaTime * _fadeSpeed;
+            fillAmount += Time.deltaTime;
             _fadeImage.fillAmount= fillAmount;
             await UniTask.Yield();
         }
@@ -49,55 +43,48 @@ public class FadeAndLoad
     /// <param name="method">Image.FillMethod</param>
     /// <param name="origin">methodで指定したものに対応するFillOriginEnumを使う</param>
     /// <returns></returns>
-    public async UniTask FadeOut<OriginEnum>(Image.FillMethod method, OriginEnum origin)where OriginEnum : Enum
+    public async UniTask FadeOut<OriginEnum>(OriginEnum origin)where OriginEnum : Enum
     {
-        if (TypeCheck(method, origin) == false)
-        {
-            Debug.LogError("指定されたmethodとoriginが正しく対応していません!");
-            return;
-        }
+        
 
         float fillAmount = 1;
         _fadeImage.fillAmount = fillAmount;
 
-        _fadeImage.fillMethod = method;
+        AutoMethodSet(origin);
         _fadeImage.fillOrigin = Convert.ToInt32(origin);//Enumをintに変換
         while (fillAmount > 0)
         {
-            fillAmount -= Time.deltaTime * _fadeSpeed;
+            fillAmount -= Time.deltaTime;
             _fadeImage.fillAmount = fillAmount;
             await UniTask.Yield();
         }
     }
 
     /// <summary>
-    /// 渡された型をチェックする関数
+    /// 渡されたoriginに基づいてmethodを変える関数
     /// </summary>
     /// <typeparam name="OriginEnum">FillOriginEnum.csの中のEnum</typeparam>
-    /// <param name="method">渡されたImage.FillMethod</param>
     /// <param name="origin">渡されたOriginEnum</param>
-    /// <returns>型が合っていたか</returns>
-    private bool TypeCheck<OriginEnum>(Image.FillMethod method,OriginEnum origin)where OriginEnum : Enum
+    private void AutoMethodSet<OriginEnum>(OriginEnum origin)where OriginEnum : Enum
     {
-        switch (method)
+        switch (origin)
         {
-            case Image.FillMethod.Horizontal:
-                if (origin.GetType() == typeof(HorizontalOrigin)) return true;
-                return false;
-            case Image.FillMethod.Vertical:
-                if (origin.GetType()==typeof(VerticalOrigin))return true;
-                return false;
-            case Image.FillMethod.Radial90:
-                if (origin.GetType() == typeof(Radial_90_Origin)) return true;
-                return false;
-            case Image.FillMethod.Radial180:
-                if (origin.GetType() == typeof(Radial_180_Origin)) return true;
-                return false;
-            case Image.FillMethod.Radial360:
-                if (origin.GetType() == typeof(Radial_360_Origin)) return true;
-                return false;
+            case HorizontalOrigin:
+                _fadeImage.fillMethod = Image.FillMethod.Horizontal;
+                break;
+            case VerticalOrigin:
+                _fadeImage.fillMethod= Image.FillMethod.Vertical;
+                break;
+            case Radial_90_Origin:
+                _fadeImage.fillMethod=Image.FillMethod.Radial90;
+                break;
+            case Radial_180_Origin:
+                _fadeImage.fillMethod=Image.FillMethod.Radial180;
+                break;
+            case Radial_360_Origin:
+                _fadeImage.fillMethod=Image.FillMethod.Radial360;
+                break;
         }
-        return false;
     }
     
     
@@ -106,17 +93,16 @@ public class FadeAndLoad
     /// </summary>
     /// <param name="color">フェードさせるパネルの色</param>
     /// <returns></returns>
-    public async UniTask FadeIn(Color color)
+    public async UniTask FadeIn()
     {
         _fadeImage.fillAmount = 1;
 
         float a = 0f;
-
-        _fadeImage.color=new Color(color.r,color.g,color.b,a);
+  
         while (a<1)
         {
             a += Time.deltaTime*_fadeSpeed;
-            _fadeImage.color = new Color(color.r, color.g, color.b, a);
+            _fadeImage.color = new Color(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, a);
             await UniTask.Yield();
         }
     }
@@ -125,18 +111,25 @@ public class FadeAndLoad
     /// </summary>
     /// <param name="color">フェードさせるパネルの色</param>
     /// <returns></returns>
-    public async UniTask FadeOut(Color color)
+    public async UniTask FadeOut()
     {
         _fadeImage.fillAmount = 1;
 
         float a = 1f;
 
-        _fadeImage.color = new Color(color.r, color.g, color.b, a);
         while (a > 0)
         {
             a -= Time.deltaTime * _fadeSpeed;
-            _fadeImage.color = new Color(color.r, color.g, color.b, a);
+            _fadeImage.color = new Color(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, a);
             await UniTask.Yield();
         }
+    }
+    /// <summary>
+    /// どの色でフェードするか
+    /// </summary>
+    /// <param name="color">色</param>
+    public void SetColor(Color color)
+    {
+        _fadeImage.color = color;
     }
 }
