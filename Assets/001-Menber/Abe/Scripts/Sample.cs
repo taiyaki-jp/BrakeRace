@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Sumple : MonoBehaviour
+public class Sample : MonoBehaviour
 {
     private FadeManager fadeManager;
     // Start is called before the first frame update
@@ -10,6 +10,6 @@ public class Sumple : MonoBehaviour
         fadeManager =GameObject.Find("FadeManager").GetComponent<FadeManager>();
 
 
-        fadeManager.Fade<Enum>("A-Test2", Radial_360_Origin.Right, VerticalOrigin.Top);
+        _ = fadeManager.Fade<Enum>("A-Test2", Radial_360_Origin.Right, VerticalOrigin.Top);
     }
 }

@@ -6,27 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour
 {
-    [SerializeField, Label("フェード速度")] float FadeSpeed=1;
-    private GameObject FadeCanvas;
+    [SerializeField, Label("フェード速度")] private float _fadeSpeed=1;
+    private GameObject _fadeCanvas;
     private FadeAndLoad load;
 
-    System.Action BeforAction=null;
-    System.Action AfterAction=null;
-    System.Action FinishAction = null;
+    //System.Action BeforeAction=null;
+    //System.Action AfterAction=null;
+    //System.Action FinishAction = null;
 
     private void Start()
     {
-        FadeCanvas = Fade_Singleton.canvas;
+        _fadeCanvas = Fade_Singleton.canvas;
 
-        load = new FadeAndLoad();
-        load.image=Fade_Singleton.FadeImage;
-        load.speed=FadeSpeed;
-
-        if (Fade_Singleton.IsFirst)
+        load = new FadeAndLoad
         {
-            FirstFade();
-            Fade_Singleton.IsFirst = false;
-        }
+            image = Fade_Singleton.FadeImage,
+            speed = _fadeSpeed
+        };
+
+        if (!Fade_Singleton.IsFirst) return;
+        _ = FirstFade();
+        Fade_Singleton.IsFirst = false;
     }
 
     /*
@@ -40,7 +40,7 @@ public class FadeManager : MonoBehaviour
         FadeCanvas.SetActive(true);
         
         await load.FadeIn();
-        //BeforAction.Invoke();
+        //BeforeAction.Invoke();
 
         await SceneManager.LoadSceneAsync(SceneName);
         //AfterAction.Invoke();
@@ -59,7 +59,7 @@ public class FadeManager : MonoBehaviour
         FadeCanvas.SetActive(true);
 
         await load.FadeInWhite();
-        //BeforAction.Invoke();
+        //BeforeAction.Invoke();
 
         await SceneManager.LoadSceneAsync(SceneName);
         //AfterAction.Invoke();
@@ -73,14 +73,14 @@ public class FadeManager : MonoBehaviour
     /// <summary>
     /// 最初のフェード
     /// </summary>
-    private async void FirstFade()
+    private async UniTask FirstFade()
     {
         //AfterAction.Invoke();
         load.SetColor(Color.black);
         await load.FadeOut();
         //FinishAction.Invoke();
 
-        FadeCanvas.SetActive(false);
+        _fadeCanvas.SetActive(false);
     }
 
 
@@ -88,51 +88,51 @@ public class FadeManager : MonoBehaviour
     /// <summary>
     /// FillAmountフェードを呼び出す関数
     /// </summary>
-    /// <param name="SceneName">遷移先のシーンの名前</param>
-    /// <param name="StartOrigin">FillOriginEnum.csのEnum</param>
-    /// <param name="EndOrigin">FillOriginEnum.csのEnum</param>
+    /// <param name="sceneName">遷移先のシーンの名前</param>
+    /// <param name="startOrigin">FillOriginEnum.csのEnum</param>
+    /// <param name="endOrigin">FillOriginEnum.csのEnum</param>
     /// <param name="color">[省略可能]フェードの色 省略すると黒</param>
-    public async void Fade<OriginEnum>(string SceneName,OriginEnum StartOrigin,OriginEnum EndOrigin,Color color=default)where OriginEnum : Enum
+    public async UniTask Fade<TOriginEnum>(string sceneName,TOriginEnum startOrigin,TOriginEnum endOrigin,Color color=default)where TOriginEnum : Enum
     {
-        FadeCanvas = Fade_Singleton.canvas;
-        FadeCanvas.SetActive(true);
+        _fadeCanvas = Fade_Singleton.canvas;
+        _fadeCanvas.SetActive(true);
 
-        if(color==default)load.SetColor(Color.black); 
+        if(color==default)load.SetColor(Color.black);
             else load.SetColor(color);
 
-        await load.FadeIn(StartOrigin);
-        //BeforAction.Invoke();
+        await load.FadeIn(startOrigin);
+        //BeforeAction.Invoke();
 
-        await SceneManager.LoadSceneAsync(SceneName);
+        await SceneManager.LoadSceneAsync(sceneName);
         //AfterAction.Invoke();
 
-        await load.FadeOut(EndOrigin);
+        await load.FadeOut(endOrigin);
         //FinishAction.Invoke();
 
-        FadeCanvas.SetActive(false);
+        _fadeCanvas.SetActive(false);
     }
     /// <summary>
     /// 透明度フェードを呼び出す関数
     /// </summary>
-    /// <param name="SceneName">遷移先のシーンの名前</param>
-    /// <param name="Color">どんな色でフェードするか</param>
-    public async void Fade(string SceneName,Color color)
+    /// <param name="sceneName">遷移先のシーンの名前</param>
+    /// <param name="color">どんな色でフェードするか</param>
+    public async UniTask Fade(string sceneName,Color color)
     {
-        FadeCanvas = Fade_Singleton.canvas;
-        FadeCanvas.SetActive(true);
+        _fadeCanvas = Fade_Singleton.canvas;
+        _fadeCanvas.SetActive(true);
 
         if (color == default) load.SetColor(Color.black);
         else load.SetColor(color);
 
         await load.FadeIn();
-        //BeforAction.Invoke();
+        //BeforeAction.Invoke();
 
-        await SceneManager.LoadSceneAsync(SceneName);
+        await SceneManager.LoadSceneAsync(sceneName);
         //AfterAction.Invoke();
 
         await load.FadeOut();
         //FinishAction.Invoke();
 
-        FadeCanvas.SetActive(false);
+        _fadeCanvas.SetActive(false);
     }
 }

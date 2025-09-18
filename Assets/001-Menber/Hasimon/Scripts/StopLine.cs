@@ -2,11 +2,10 @@
 using NaughtyAttributes;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StopLine : MonoBehaviour
 {
-     
+
     [SerializeField] GameObject _outLine;
     [SerializeField] Transform _line;
     // ↓加速用のやつ
@@ -35,39 +34,35 @@ public class StopLine : MonoBehaviour
     }
     private async void OnTriggerStay(Collider other)
     {
-        if(_player.velocity.magnitude <= 0.01&& ! isdone) 
-        {
-            isdone = true;
-            float range = _player.transform.position.z - _line.position.z; 
-            
-            //速度を変える
-            if(range < _boostLine1)// 車の大きさによって距離いじってくれ
-            {
-                carcontroller.a = _boost1;    //初速の変数名と数値
-            }
-            else if(range < _boostLine2)
-            {
-                carcontroller.a = _boost2;
-            }
-            else if(range < _boostLine3)
-            {
-                carcontroller.a = _boost3;
-            }
+        if (!(_player.velocity.magnitude <= 0.01) || isdone) return;
+        isdone = true;
+        float range = _player.transform.position.z - _line.position.z;
 
-            await Juage();
-            Destroy(_outLine);
+        //速度を変える
+        if(range < _boostLine1)// 車の大きさによって距離いじってくれ
+        {
+            carcontroller.a = _boost1;    //初速の変数名と数値
         }
-        
-        
+        else if(range < _boostLine2)
+        {
+            carcontroller.a = _boost2;
+        }
+        else if(range < _boostLine3)
+        {
+            carcontroller.a = _boost3;
+        }
+
+        await Judge();
+        Destroy(_outLine);
     }
 
-    private async UniTask Juage()
+    private async UniTask Judge()
     {
         dolly.SetWayPoint(GetComponentInParent<Transform>());
         await dolly.DoDolly();
         if (outLine.IsMissed)
         {
-            fade.Fade<Enum>("TitleScene",Radial_180_Origin.Buttom,VerticalOrigin.Top);
+            _ = fade.Fade<Enum>("TitleScene",Radial_180_Origin.Buttom,VerticalOrigin.Top);
             return;
         }
         await dolly.DoDollyBack();

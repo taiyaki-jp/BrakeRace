@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +10,7 @@ public class GoalController : MonoBehaviour
 {
     
     [SerializeField] GameObject _player;
-    [SerializeField] private TextMeshProUGUI _distanceText; //  Text‚ğ‚¢‚ê‚é
+    [SerializeField] private TextMeshProUGUI _distanceText; //  Textã‚’ã„ã‚Œã‚‹
 
     private FadeManager _fadeManager;
 
@@ -20,25 +20,25 @@ public class GoalController : MonoBehaviour
         _fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
     }
     /// <summary>
-    /// ƒS[ƒ‹”»’è
+    /// ã‚´ãƒ¼ãƒ«åˆ¤å®š
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("ƒS[ƒ‹!!");
-            _fadeManager.Fade<Enum>("TitleScene", Radial_90_Origin.ButtomLeft, Radial_360_Origin.Top);
-            //SceneManager.LoadScene("ƒV[ƒ“–¼");
+            Debug.Log("ã‚´ãƒ¼ãƒ«!!");
+            _ = _fadeManager.Fade<Enum>("TitleScene", Radial_90_Origin.ButtomLeft, Radial_360_Origin.Top);
+            //SceneManager.LoadScene("ã‚·ãƒ¼ãƒ³å");
         }
     }
 
     /// <summary>
-    /// ƒS[ƒ‹‚Ü‚Å‚Ì‹——£
+    /// ã‚´ãƒ¼ãƒ«ã¾ã§ã®è·é›¢
     /// </summary>
     private void Update()
     {
-        float dis = Vector3.Distance(this.transform.position, _player.transform.position) - 1f;   //  Cube ‚Ü‚Å‚Æ‚ÌŠÔ‚Ì‹——£Zo(Cube‚Ì’†SÀ•W‚©‚ç - 0.5ˆø‚¢‚Ä‚é)
-        _distanceText.text = $"c‚è{dis.ToString("F0")}m";
+        float dis = Vector3.Distance(this.transform.position, _player.transform.position) - 1f;   //  Cube ã¾ã§ã¨ã®é–“ã®è·é›¢ç®—å‡º(Cubeã®ä¸­å¿ƒåº§æ¨™ã‹ã‚‰ - 0.5å¼•ã„ã¦ã‚‹)
+        _distanceText.text = $"æ®‹ã‚Š{dis.ToString("F0")}m";
     }
 }

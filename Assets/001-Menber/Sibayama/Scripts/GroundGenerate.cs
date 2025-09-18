@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class GroundGenerate : MonoBehaviour
 {
-    [SerializeField,Label("ƒvƒŒƒCƒ„[")] private GameObject _player;
-    //  ¶¬‚·‚éGround‚ÌPrefab‚ğƒAƒ^ƒbƒ`‚·‚é
-    [SerializeField,Label("’n–Ê‚ÌƒvƒŒƒnƒu")] private List<GameObject> _grounds = new List<GameObject>();
-    [SerializeField, Label("Œ»İ‚Ì’n–Ê")] private List<GameObject> _groundsList = new List<GameObject>();
+    [SerializeField,Label("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼")] private GameObject _player;
+    //  ç”Ÿæˆã™ã‚‹Groundã®Prefabã‚’ã‚¢ã‚¿ãƒƒãƒã™ã‚‹
+    [SerializeField,Label("åœ°é¢ã®ãƒ—ãƒ¬ãƒãƒ–")] private List<GameObject> _grounds = new List<GameObject>();
+    [SerializeField, Label("ç¾åœ¨ã®åœ°é¢")] private List<GameObject> _groundsList = new List<GameObject>();
 
-    [SerializeField,Label("’n–Ê‚ª‰½ŒÂ“¯‚É‘¶İ‚·‚é‚©")]private int _groundCount = 10;
-    [SerializeField, Label("’n–Ê‚Ì’·‚³")] private float _groundLength;
+    [SerializeField,Label("åœ°é¢ãŒä½•å€‹åŒæ™‚ã«å­˜åœ¨ã™ã‚‹ã‹")]private int _groundCount = 10;
+    [SerializeField, Label("åœ°é¢ã®é•·ã•")] private float _groundLength;
 
-    float playerBeforePosZ; //  Player‚Ì­‚µ‘O‚ÌzÀ•W
-    float playerAfterPosZ;@//  Player‚Ì¡‚ÌzÀ•W
-    float playerNowPosZ=0;  //  Player‚ª‚Ç‚ê‚¾‚¯ˆÚ“®‚µ‚½‚©zÀ•W
+    float playerBeforePosZ; //  Playerã®å°‘ã—å‰ã®zåº§æ¨™
+    float playerAfterPosZ;ã€€//  Playerã®ä»Šã®zåº§æ¨™
+    float playerNowPosZ=0;  //  PlayerãŒã©ã‚Œã ã‘ç§»å‹•ã—ãŸã‹zåº§æ¨™
 
 
     
@@ -23,7 +23,7 @@ public class GroundGenerate : MonoBehaviour
     void Start()
     {
         
-        //  Hierarcy‚Ì’†‚©‚ç–¼‘O‚ª"Player"‚Ì‚à‚Ì‚ğ’T‚µ‚Ä•Ï”‚ÉŠi”[
+        //  Hierarcyã®ä¸­ã‹ã‚‰åå‰ãŒ"Player"ã®ã‚‚ã®ã‚’æ¢ã—ã¦å¤‰æ•°ã«æ ¼ç´
         _player = GameObject.Find("Player");    
 
         playerBeforePosZ = _player.transform.position.z;
@@ -56,16 +56,16 @@ public class GroundGenerate : MonoBehaviour
 
     private void Generate()
     {
-        //ˆê”ÔV‚µ‚­¶¬‚µ‚½“¹˜H‚Ìæ‚É¶¬(ƒ}ƒl[ƒWƒƒ[‚ÌqƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä)
+        //ä¸€ç•ªæ–°ã—ãç”Ÿæˆã—ãŸé“è·¯ã®å…ˆã«ç”Ÿæˆ(ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦)
         var obj = Instantiate(_grounds[Random.Range(0, 3)], new Vector3(0, 0, _groundsList[^1].transform.position.z + _groundLength), Quaternion.identity, this.transform);
-        _groundsList.Add(obj);  //  List’Ç‰Á
+        _groundsList.Add(obj);  //  Listè¿½åŠ 
     }
 
     private void DestoryGround()
     {
-        //  ƒIƒuƒWƒFƒNƒgíœ
+        //  ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤
         Destroy(_groundsList[0]);
-        //  Listíœ
+        //  Listå‰Šé™¤
         _groundsList.RemoveAt(0);
     }
 }

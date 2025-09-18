@@ -3,10 +3,10 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChengeScene : MonoBehaviour
+public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private Button _button;
-    [SerializeField,Scene] private string _SceneName;
+    [SerializeField,Scene] private string _sceneName;
     [SerializeField]private bool _useWhite=false;
 
     private FadeManager _fadeManager;
@@ -24,9 +24,9 @@ public class ChengeScene : MonoBehaviour
     private void FadeStart()
     {
         if (_useWhite)
-            _fadeManager.Fade(_SceneName, Color.white);
+            _ = _fadeManager.Fade(_sceneName, Color.white);
         else
-            _fadeManager.Fade<Enum>(_SceneName, HorizontalOrigin.Left,HorizontalOrigin.Right);
+            _ = _fadeManager.Fade<Enum>(_sceneName, HorizontalOrigin.Left,HorizontalOrigin.Right);
 
 
     }
